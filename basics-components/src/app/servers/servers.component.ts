@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  // selector: '[app-servers]',//to use as attribute
+  // selector: '[app-servers]',
   // selector: '.app-servers',
   selector: 'app-servers',
   template: `
@@ -13,7 +13,7 @@ export class ServersComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
