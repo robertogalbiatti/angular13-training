@@ -4,19 +4,6 @@
 <!-- <p>{{serverName}}</p> -->
 <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
 <!-- Neste caso estamos pegando a propriedade nativa do botão "disabled" e com [] indicamos que estará conectado ao Angular, e no caso a função allowNewServer -->
-
-<!-- Início da resolução do exercício:
-1) Add a input field which updates a property (username) via Two-Way-Biding
-2) Output the username property via String Interpolation (in a paragraph below the input)
-3) Add a button which may only be clicked if the username is NOT an empty string
-4) Upon clicking the button, the username should be reset to an empty string -->
-
-<input type="text" class="form-control" [(ngModel)]="username">
-<p>{{username}}</p>
-<button class="btn btn-primary" [disabled]="username === ''" (click)="username = ''">Reset User</button>
-
-<!-- Fim do exerício -->
-
 <!-- <p [innerText]="allowNewServer"></p> -->
 <p>{{ serverCreationStatus }}</p>
 <app-server></app-server>
