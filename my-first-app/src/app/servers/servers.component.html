@@ -1,7 +1,7 @@
 <label>Server Name</label>
 <!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)"> //se nao comentarmos este linha, não havera two-way-databiding, o segundo input nao modifica o primeiro -->
 <input type="text" class="form-control" [(ngModel)]="serverName">
-<p>{{serverName}}</p>
+<!-- <p>{{serverName}}</p> -->
 <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
 <!-- Neste caso estamos pegando a propriedade nativa do botão "disabled" e com [] indicamos que estará conectado ao Angular, e no caso a função allowNewServer -->
 <!-- <p [innerText]="allowNewServer"></p> -->

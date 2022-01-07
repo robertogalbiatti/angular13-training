@@ -25,7 +25,7 @@ export class ServersComponent implements OnInit {
   }
   //usando "on" significa que será gatilhado dentro do Template, será um evento chamado
   onCreateServer() {
-    this.serverCreationStatus = 'Server was created!';
+    this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
   }
 
   onUpdateServerName(event: Event) {
