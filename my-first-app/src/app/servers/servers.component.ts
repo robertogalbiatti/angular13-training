@@ -14,7 +14,7 @@ export class ServersComponent implements OnInit {
   allowNewServer = false;
   serverCreationStatus = 'No server was created!';
   serverName = 'Testserver';
-  username = '';
+  serverCreated = false;
 
   constructor() { 
     setTimeout(() => {
@@ -26,6 +26,7 @@ export class ServersComponent implements OnInit {
   }
   //usando "on" significa que será gatilhado dentro do Template, será um evento chamado
   onCreateServer() {
+    this.serverCreated = true;
     this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
   }
 
