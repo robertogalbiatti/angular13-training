@@ -1,3 +1,4 @@
 <!-- Estamos usando os [] para indicar que será feito o binding essa propriedade... outra opção seria 'background-color': -->
-<p [ngStyle]="{backgroundColor: getColor()}">{{ 'Server' }} with ID {{ serverId }} is {{ getServerStatus() }} </p>
+<p [ngStyle]="{backgroundColor: getColor()}" [ngClass]="{online: serverStatus === 'online'}">{{ 'Server' }} with ID {{
+    serverId }} is {{ getServerStatus() }} </p>
 <!-- praticamente tudo que pode ser facilmente convertido para String pode ser colocado desta forma... -->
