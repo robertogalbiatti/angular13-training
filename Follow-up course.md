@@ -51,5 +51,7 @@ Assim como existe os **_directives_** sem **_template_**:
 
 ![Alt text](/screenshots/directives.png?raw=true)
 
-> Usos de directives: **_ngIf, ngElse_** (estruturais) e também tem de **_atribute_** que funcionam onde modificam apenas onde foram colocadas, como elementos HTML.
-> Para **_ngClass_**, ele só acontecerá se uma condição acontecer, portanto trabalha com boolean, e estamos falando de classe CSS.
+Usos de directives: **_ngIf, ngElse_** (estruturais) e também tem de **_atribute_** que funcionam onde modificam apenas onde foram colocadas, como elementos HTML.
+Para **_ngClass_**, ele só acontecerá se uma condição acontecer, portanto trabalha com boolean, e estamos falando de classe CSS.
+
+> **OBS: Para as structural directives sempre utilizamos o \* antes, sempre que modifica o DOM!!!**
