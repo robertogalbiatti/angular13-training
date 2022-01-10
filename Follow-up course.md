@@ -1,6 +1,6 @@
 # Acompanhamento curso
 
-1. `ng create my-first-app` (colocar não e CSS)
+1. `ng new my-first-app` (colocar não e CSS)
 
 2. Depois ir para a pasta com o comando cd e dar `um ng server` para criar um servidor de desenvolvimento para testarmos no navegador.
    > Para o começo do desenvolvimento e aprendizado junto ao instrutor, deve-se baixar o app.component.html e trocar pelo atual
@@ -9,7 +9,13 @@
 
 > (ver vídeo 16)...
 
-# Entendendo os arquivos
+# Criando componente
+
+Criar uma pasta e dentro dela criar os arquivos na mão, ou dentro da pasta vc da o comando `ng g c <nome do componente>`.
+
+> OBS: No caso seria `ng generate class <nome>`.
+
+# Entendendo os arquivos/
 
 Primeiramente o arquivo _main.ts_ vem primeiro e dentro dele achamos um `bootstrapModule(AppModule)`, então, se abrirmos o _app.module.ts_ encotramos o `AppComponent`. Assim, o Angular analisa agora o _app.component.ts_, lê o `app-root` (selector)\* e assim dentro do _index.html_ lá está o `app-root`, assim ele deve inserir o app componente, e então o app component possui um html, então o angular lê esse html.
 
