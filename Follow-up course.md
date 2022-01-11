@@ -61,3 +61,14 @@ Usos de directives: **_ngIf, ngElse_** (estruturais) e também tem de **_atribut
 Para **_ngClass_**, ele só acontecerá se uma condição acontecer, portanto trabalha com boolean, e estamos falando de classe CSS.
 
 > **OBS: Para as structural directives sempre utilizamos o \* antes, sempre que modifica o DOM!!!**
+
+# Novo course project
+
+Nesta parte do curso, estamos criando um app de acordo com o modelo abaixo:
+![Alt text](/screenshots/planningApp.png?raw=true)
+
+Para criar de forma automática um Component e sem o arquivo spec(Testes), dar o comando:
+`ng g c recipes --skip-tests true`
+
+Para criar algo dentro de um diretório de um component:
+`ng g c recipes/recipe-detail --skip-tests true`
