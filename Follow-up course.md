@@ -72,3 +72,15 @@ Para criar de forma automática um Component e sem o arquivo spec(Testes), dar o
 
 Para criar algo dentro de um diretório de um component:
 `ng g c recipes/recipe-detail --skip-tests true`
+
+# Debug
+
+A função debug pode ser acessada diretamente na aba desenvolvedor em **"Sources"** e se pularmos pro arquivo **_main.bundle.js_** iremos encontrar nossos métodos e afins.
+Assim que colocarmos um ponto de parada ele vai direto para um arquivo TypeScript, mas como?!
+Isso tudo acontece pq o JS suporta **source maps**.
+**_Source maps_**: CLI adiciona ao nosso bundle o arquivo TypeScript para o navegador traduzir JS para TS. É assim que vemos nosso código em TS.
+
+## Como encontrar nossos arquivos?
+
+R.: em Sources, ir em webpack
+![Alt text](/screenshots/webpackfiles.png?raw=true)
