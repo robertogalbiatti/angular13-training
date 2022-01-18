@@ -7,7 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ServerElementComponent implements OnInit {
   //decorator e normalmente tem essa cara de função
-  @Input() element: {type: string, name: string, content: string};
+  //dentro dos parenteses podemos usar um 'alias'
+  @Input('srvElement') element: {type: string, name: string, content: string};
 
   constructor() { }
 
