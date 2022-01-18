@@ -90,3 +90,6 @@ R.: em Sources, ir em webpack
 Apenas uma imagem pra exemplificar o que foi visto
 
 ![Alt text](/screenshots/propertyEvenBiding.png?raw=true)
+
+Utilizamos na aula passada o decorator `@Input()`: serve para os componentes "pais" poderem dar um bind das propriedades dele.
+Sem ele, não há erro, mas o front não mostrará o elemento...
