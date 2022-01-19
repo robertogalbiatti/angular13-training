@@ -93,3 +93,4 @@ Apenas uma imagem pra exemplificar o que foi visto
 
 Utilizamos na aula passada o decorator `@Input()`: serve para os componentes "pais" poderem dar um bind das propriedades dele.
 Sem ele, não há erro, mas o front não mostrará o elemento...
+Dessa forma os pais passam aos filhos as propriedades, onde ele foi implementado
