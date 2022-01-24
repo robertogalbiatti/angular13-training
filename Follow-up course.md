@@ -97,3 +97,16 @@ Dessa forma os pais passam aos filhos as propriedades, onde ele foi implementado
 
 Agora, para o filho orientar ao pai que houve uma mudança no componente filho:
 Então utilizamos o `@Output()`: estamos passando algo para fora do componente.
+
+Vale lembrar que com o `@Output()` nós criamos o EventEmitter e já com o `@Input()` não...
+
+## Entendendo **_View Encapsulation_**
+
+Sempre há o DOM por trás dos elementos, e existe uma shadow por trás disso, o Angular trabalha de uma forma em que os elementos de **_style_** um componente ficam "marcados".
+Falamos de shadow DOM, que não é suportado para todos os browsers: cada elemento possui seu shadow DOM por trás, onde é possível assinalar **_styles_** para cada elemento. Portanto o Angular emular isso dessa forma.
+
+É possível ver os **_\_ngcontent-ejo-1_** ou 2:
+
+Conforme o exemplo abaixo:
+
+![Alt text](/screenshots/EncapsulationView.png?raw=true)
