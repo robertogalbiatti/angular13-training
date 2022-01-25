@@ -110,3 +110,6 @@ Falamos de shadow DOM, que não é suportado para todos os browsers: cada elemen
 Conforme o exemplo abaixo:
 
 ![Alt text](/screenshots/EncapsulationView.png?raw=true)
+
+Em relação a encsulamento, é possivel modificá-lo através do decorator `@Component`, onde é possível colocar `encapsulation: ViewEncapsulation.None` (entre outros)
+None significa que não há encapsulation e portanto a mudança de style no CSS afetará o componente globalmente.
