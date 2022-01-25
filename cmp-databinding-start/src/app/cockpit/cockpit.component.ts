@@ -10,7 +10,7 @@ export class CockpitComponent implements OnInit {
   //isso abaixo é uma propriedade em Angula, serverCreated é um evento, e evento possui essa estrutura no Angular
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();;
-  newServerName = '';
+  // newServerName = '';
   newServerContent = '';
 
   constructor() { }
@@ -18,12 +18,13 @@ export class CockpitComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    onAddServer() {
-    this.serverCreated.emit({serverName: this.newServerName, serverContent: this.newServerContent});
+    onAddServer(nameInput: HTMLInputElement) {
+    // console.log(nameInput.value);
+    this.serverCreated.emit({serverName: nameInput.value, serverContent: this.newServerContent});
   }
 
-  onAddBlueprint() {
-    this.blueprintCreated.emit({serverName: this.newServerName, serverContent: this.newServerContent});
+  onAddBlueprint(nameInput: HTMLInputElement) {
+    this.blueprintCreated.emit({serverName: nameInput.value, serverContent: this.newServerContent});
   }
 
 }

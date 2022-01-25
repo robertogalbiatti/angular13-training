@@ -15,7 +15,7 @@ Criar uma pasta e dentro dela criar os arquivos na mão, ou dentro da pasta vc d
 
 > OBS: No caso seria `ng generate class <nome>`.
 
-## Entendendo os arquivos/
+## Entendendo os arquivos
 
 Primeiramente o arquivo _main.ts_ vem primeiro e dentro dele achamos um `bootstrapModule(AppModule)`, então, se abrirmos o _app.module.ts_ encotramos o `AppComponent`. Assim, o Angular analisa agora o _app.component.ts_, lê o `app-root` (selector)\* e assim dentro do _index.html_ lá está o `app-root`, assim ele deve inserir o app componente, e então o app component possui um html, então o angular lê esse html.
 
@@ -113,3 +113,7 @@ Conforme o exemplo abaixo:
 
 Em relação a encsulamento, é possivel modificá-lo através do decorator `@Component`, onde é possível colocar `encapsulation: ViewEncapsulation.None` (entre outros)
 None significa que não há encapsulation e portanto a mudança de style no CSS afetará o componente globalmente.
+
+## Local References
+
+Uso de referências locais dentro do template, mas o uso é restrito ao template e NÃO ao código TS: usa-se '#' para tanto.
