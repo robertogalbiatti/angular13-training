@@ -117,3 +117,7 @@ None significa que não há encapsulation e portanto a mudança de style no CSS 
 ## Local References
 
 Uso de referências locais dentro do template, mas o uso é restrito ao template e NÃO ao código TS: usa-se '#' para tanto.
+
+## Local References and any Elements
+
+Para tal caso, usamos o `@ViewChild` no nosso componente, assim é possível acessar referências locais ou até mesmo elementos DOM.
