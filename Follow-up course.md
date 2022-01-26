@@ -121,3 +121,9 @@ Uso de referências locais dentro do template, mas o uso é restrito ao template
 ## Local References and any Elements
 
 Para tal caso, usamos o `@ViewChild` no nosso componente, assim é possível acessar referências locais ou até mesmo elementos DOM.
+
+## Directive Ng-content
+
+Utilizar a directive ng-content no seu component, no local onde vc quer renderizar o conteúdo (que foi passado agora para o `app.component.ts`).
+O que acontece quando colocamos isso no nosso `server-element.component` (exemplo)? Angular irá dentro do app.component e dentro da tag do nosso elemento irá ler este conteúdo.
+Uma boa alternativa para reuso de componentes e quando há um HTML muito complexo para uso de **_Property Biding_**.
