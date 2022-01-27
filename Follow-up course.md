@@ -15,6 +15,11 @@ Criar uma pasta e dentro dela criar os arquivos na mão, ou dentro da pasta vc d
 
 > OBS: No caso seria `ng generate class <nome>`.
 
+## Adicionando Bootstrap para o projeto criado
+
+Instala-se o bootstrap não em modo global: `npm install --save bootstrap@3`.
+Após isto, ir no arquivo `angular.json` e informar de onde vem o **_style_**. Ex: "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
 ## Entendendo os arquivos
 
 Primeiramente o arquivo _main.ts_ vem primeiro e dentro dele achamos um `bootstrapModule(AppModule)`, então, se abrirmos o _app.module.ts_ encotramos o `AppComponent`. Assim, o Angular analisa agora o _app.component.ts_, lê o `app-root` (selector)\* e assim dentro do _index.html_ lá está o `app-root`, assim ele deve inserir o app componente, e então o app component possui um html, então o angular lê esse html.
