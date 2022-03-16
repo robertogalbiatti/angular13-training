@@ -63,6 +63,13 @@ Deve-se usar quando queremos mostrar algo no _template_, algo como texto... e de
 Estamos utilizando o ngModel (que é uma diretiva, que pertence ao FormsModule), utilizamos `[(ngModel)]="something"`.
 E para isso, é necessário importar o FormsModule.
 
+## Angular CLI
+
+Para utilizar outra porta para sua aplicação, dê o comando:
+`ng serve --port XXXX`
+e ainda pode colocar do lado a live reload port se quiser:
+`ng serve --port XXXX --live-reload-port YYYYY`
+
 ## Directives
 
 são instruções no DOM (componentes acabam sendo tb “tipo” instruções...pq?
