@@ -9,6 +9,11 @@
 
 > (ver vídeo 16)...
 
+## Entendendo o que tem dentro do arquivo `.module`:
+
+Se estamos falando por exemplo do `app.module.ts`, no Declarations teremos todos os componentes que iremos utilizar (components, directives e pipes). No Imports, colocamos os módulos que iremos utilizar neste mesmo módulo (ou ainda o que está sendo utilizado no componente que declaramos)
+No Providers colocamos os serviços que iremos utilizar, e se estamos colocando no `app.module.ts` significa que o serviço declarado estará disponivel para todos os módulos, o que pode vir aqui? Autenticação, Login, etc. E o bootstrap seria o que estamos instanciando quando iniciamos a aplicação.
+
 ## Criando componente
 
 Criar uma pasta e dentro dela criar os arquivos na mão, ou dentro da pasta vc da o comando `ng g c <nome do componente>`. Se for criar sem o arquivo spec seria: `ng g c <component> --skip-tests=true`
