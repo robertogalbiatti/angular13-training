@@ -11,8 +11,8 @@
 
 ## Entendendo o que tem dentro do arquivo `.module`:
 
-Se estamos falando por exemplo do `app.module.ts`, no Declarations teremos todos os componentes que iremos utilizar (components, directives e pipes). No Imports, colocamos os módulos que iremos utilizar neste mesmo módulo (ou ainda o que está sendo utilizado no componente que declaramos)
-No Providers colocamos os serviços que iremos utilizar, e se estamos colocando no `app.module.ts` significa que o serviço declarado estará disponivel para todos os módulos, o que pode vir aqui? Autenticação, Login, etc. E o bootstrap seria o que estamos instanciando quando iniciamos a aplicação.
+Se estamos falando por exemplo do `app.module.ts`, no Declarations teremos todos os componentes que iremos utilizar (components, directives e pipes). No Imports, colocamos os módulos que iremos utilizar neste mesmo (ou ainda o que está sendo utilizado no componente que declaramos).
+No Providers colocamos os serviços que iremos utilizar, e se estamos colocando no `app.module.ts` significa que o serviço estará disponivel para todos os módulos, o que pode vir aq? Autenticação, Login, etc... E o bootstrap seria o que estamos instanciando quando iniciamos a aplocação.
 
 ## Criando componente
 
@@ -57,6 +57,11 @@ Comunicação entre nosso business code, ts code e o template (html que o usuár
 Deve-se usar quando queremos mostrar algo no _template_, algo como texto... e de outra forma usar **_Property Biding_**, como mostrar um componente, ou querer mudar algo, seja um elemento HTML ou whatever...
 
 > Lembrando que neste caso: `<button class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button>` A parte `[disabled]="!allowNewServer">` na verdade é Angular, e não HTML...
+
+## Two-way Data Biding
+
+Estamos utilizando o ngModel (que é uma diretiva, que pertence ao FormsModule), utilizamos `[(ngModel)]="something"`.
+E para isso, é necessário importar o FormsModule.
 
 ## Directives
 
