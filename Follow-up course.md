@@ -70,6 +70,20 @@ Para utilizar outra porta para sua aplicação, dê o comando:
 e ainda pode colocar do lado a live reload port se quiser:
 `ng serve --port XXXX --live-reload-port YYYYY`
 
+O que é o arquivo karma.config.js?
+É o arquivo de configuração do Jasmine, o teste unitário que é criado quando criamos um projeto.
+
+Arquivo polyfills.ts: arquivo onde possui algumas bibliotecas a mais para o projeto.
+
+### Arquivo package.json
+
+"dependencies": bibliotecas que precisa pra rodar o projeto
+"devDependencies": bibliotecas para rodar enquanto desenvolve. Exemplo: no dev possui o typescritp, pois depois que é feito o build, estamos utilizando o EcmaScript, e não mais o TS.
+
+![Alt text](/screenshots/packageJsonPolyfillsDependencies.jpg?raw=true)
+
+![Alt text](/screenshots/packageJsonDependencies.jpg?raw=true)
+
 ## Directives
 
 são instruções no DOM (componentes acabam sendo tb “tipo” instruções...pq?
