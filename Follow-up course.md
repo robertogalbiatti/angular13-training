@@ -75,6 +75,10 @@ O que é o arquivo karma.config.js?
 
 Arquivo polyfills.ts: arquivo onde possui algumas bibliotecas a mais para o projeto.
 
+Para fazer build da aplicação (para prod mudar o env):
+
+![Alt text](/screenshots/buildDev.jpg?raw=true)
+
 ### Arquivo package.json
 
 "dependencies": bibliotecas que precisa pra rodar o projeto
@@ -97,6 +101,14 @@ Usos de directives: **_ngIf, ngElse_** (estruturais) e também tem de **_atribut
 Para **_ngClass_**, ele só acontecerá se uma condição acontecer, portanto trabalha com boolean, e estamos falando de classe CSS.
 
 > **OBS: Para as structural directives sempre utilizamos o \* antes, sempre que modifica o DOM!!!**
+
+![Alt text](/screenshots/diretivasTipos.png?raw=true)
+
+Pensando na performance, custos e etc, quando falamos de **_ngIf_**, pensar no uso da propriedade _hidden_ como _property biding_.
+
+![Alt text](/screenshots/hiddenVsngIf.png?raw=true)
+
+> **OBS: o uso do Hidden fica a mostra para o usuário no browser, portanto sempre pensar na parte de segurança!!!**
 
 ## Novo course project
 
@@ -169,3 +181,9 @@ Uma boa alternativa para reuso de componentes e quando há um HTML muito complex
 
 Abaixo uma figura ilustrativa para entender cada um deles:
 ![Alt text](/screenshots/LifecyclesAngular.png?raw=true)
+
+## Algumas libs interessantes a instalar
+
+### Bootstrap:
+
+https://www.fabricadecodigo.com/bootstrap-instalacao-angular/
