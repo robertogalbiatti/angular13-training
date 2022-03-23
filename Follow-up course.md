@@ -110,6 +110,15 @@ Pensando na performance, custos e etc, quando falamos de **_ngIf_**, pensar no u
 
 > **OBS: o uso do Hidden fica a mostra para o usuário no browser, portanto sempre pensar na parte de segurança!!!**
 
+Criamos uma diretiva chamada fundoAmarelo, no projeto diretivas, para especificar esta diretiva para um determinado elemento do HTML, fazemos:
+`selector: p[fundoAmarelo]`
+Neste caso estamos entrando no seletor da diretiva criada e especificando o uso somente para parágrafos.
+
+HostListener e HostBiding em diretivas:
+HostListener fica escutando eventos da diretiva, e o Biding permite o biding de um atributo/classe do html numa variável. Ver diretiva `highlight-mouse.directive.ts`
+
+Utilizando TemplateRef e ViewContainerRef: estamos criando uma diretiva _'ngElse'_, portanto o TemplateRef faz referência a tag Template (que vem do Web Components, ver aula ngIf) e o ViewContainerRef ao que vai ser mostrado que seria uma div.
+
 ## Novo course project
 
 Nesta parte do curso, estamos criando um app de acordo com o modelo abaixo:
@@ -181,6 +190,11 @@ Uma boa alternativa para reuso de componentes e quando há um HTML muito complex
 
 Abaixo uma figura ilustrativa para entender cada um deles:
 ![Alt text](/screenshots/LifecyclesAngular.png?raw=true)
+
+## Dicas
+
+1. Para saber o que é preciso modificar dentro de um elemento no Angular, dar um console.log, utilizando até se preciso o ElementRef e ir navegando sobre ele.
+2. Evitar o uso do ElementRef em aplicações, pois o acesso é feito direto no DOM, e traz vulnerabilidades na aplicação. Uma alternativa é o Renderer.
 
 ## Algumas libs interessantes a instalar
 
