@@ -119,6 +119,20 @@ HostListener fica escutando eventos da diretiva, e o Biding permite o biding de 
 
 Utilizando TemplateRef e ViewContainerRef: estamos criando uma diretiva _'ngElse'_, portanto o TemplateRef faz referência a tag Template (que vem do Web Components, ver aula ngIf) e o ViewContainerRef ao que vai ser mostrado que seria uma div.
 
+## Services
+
+Utilizado muito para CRUD's.
+
+![Alt text](/screenshots/service.png?raw=true)
+
+![Alt text](/screenshots/dry.png?raw=true)
+
+Quando estamos trabalhando com Services, ele é automaticamente escrito no providers no `app.module.ts` pelo angular CLI, e neste caso ela é instanciada apenas uma vez.
+
+Singleton: quando estamos utilizando o mesmo serviço entre mais componentes. Ou seja, no providers de diferentes módulos está sendo declarado um Serviço, mas se dermos um console.log dentro do próprio Service, o navegador mostrará apenas uma instância.
+
+Outra forma de utilizar o service sem declarar no módulo, e declara diretamente dentro do componente, abaixo do StylesUrl, na anotation Component. Assim o componente estará utilizando este serviço, porém, no console.log aparecerá mais de uma instância do serviço.
+
 ## Novo course project
 
 Nesta parte do curso, estamos criando um app de acordo com o modelo abaixo:
@@ -153,7 +167,7 @@ Sem ele, não há erro, mas o front não mostrará o elemento...
 Dessa forma os pais passam aos filhos as propriedades, onde ele foi implementado.
 Resumido, colocamos o Input quando queremos pegar algo de fora. Ex: Recipe em **_recipe-item.component_** está pegando o Recipe do **_recipe-list.compoent_**.
 
-Agora, para o filho orientar ao pai que houve uma mudança no componente filho:
+Agora, para o filho orientar ao pai que houve uma mudança no componente filho, ou seja o filho passa propriedades para o componente pai:
 Então utilizamos o `@Output()`: estamos passando algo para fora do componente.
 
 Vale lembrar que com o `@Output()` nós criamos o EventEmitter e já com o `@Input()` não...
@@ -190,6 +204,12 @@ Uma boa alternativa para reuso de componentes e quando há um HTML muito complex
 
 Abaixo uma figura ilustrativa para entender cada um deles:
 ![Alt text](/screenshots/LifecyclesAngular.png?raw=true)
+
+## Pipes
+
+O que são Pipes? transforma o valor dentro de um Template. O Angular já tem Pipes embutidos: pra trabalhar com números, moedas e preços...etc
+
+[Documentção para Pipes - Angular ](https://angular.io/guide/pipes)
 
 ## Dicas
 
