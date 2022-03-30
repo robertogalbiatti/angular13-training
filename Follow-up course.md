@@ -211,6 +211,13 @@ O que são Pipes? transforma o valor dentro de um Template. O Angular já tem Pi
 
 [Documentção para Pipes - Angular ](https://angular.io/guide/pipes)
 
+O que é um pipe puro? Ele não olha as modificações do valor que foi passado como parâmentro (como um método de 'transform'). Não ve as modificações dele.
+Ou seja se criamos um pipe para filtrar valores e adicionamos o valor novo e já deixamos filtrado para mostrar esse valor novo, ele não aparecerá (aula 46 - Pipe puro)
+
+Pipe não puro: quando há uma modificação de valor que é recebido pelo pipe, ele continua observando os valores.
+
+> OBS: no curso vemos o pipe como filtro e orderBy, NÃO FAZER ISSO, apenas foi didático.
+
 ## Dicas
 
 1. Para saber o que é preciso modificar dentro de um elemento no Angular, dar um console.log, utilizando até se preciso o ElementRef e ir navegando sobre ele.
