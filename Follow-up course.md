@@ -218,10 +218,43 @@ Pipe não puro: quando há uma modificação de valor que é recebido pelo pipe,
 
 > OBS: no curso vemos o pipe como filtro e orderBy, NÃO FAZER ISSO, apenas foi didático.
 
+## Single Page Application e Rotas
+
+Quando temos uma página em que clicamos em algumas abas e a página não está sendo recarregada, ela é uma SPA, porém se a cada clique a página recarregar, ela não é uma SPA.
+Neste caso, a cada clique na SPA, estamos mudando o Hash (#) pois é modificado algo na página apenas.
+
+![Alt text](/screenshots/hashAngular.png?raw=true)
+
+O componente da rota é renderizado dentro da tag `<router-outlet></router-outlet>`, criamos na mão o `app.routing.ts` colocando tudo que deve ser feito para poder utilizar as rotas.
+
+Uma forma bem simples de saber onde estamos, qual rota, seu id...etc é utilizar a classe do Angular ActivatedRout, e assim colocamos um console log para vermos onde podemos pegar o id, depois disso com o this.id passamos o caminho que neste caso foi `this.id = this.route.snapshot.params['id]`. E assim colocando no template o String Interpolation do ID para mostrar em tela, mas esta forma não atualiza em tempo real caso mudemos o id em um input (exemplo). A gente só pega a "foto" do primeiro id.
+
+`queryParams`: parâmetro de rota de URL. Utilizado quando queremos mostrar em qual página estamos (e mostrar na url, ex: www.algo.com?pagina=1), ou para qualquer parâmetro de URL.
+
+Quando estamos codando um `routing.module`, no `imports` podemos colocar `RouterModule.forRoot` ou `forChild`, o forChild vem quando estamos declarando um módulo de funcionalidade de rota e o `ForRoot` dentro do `app.routing.module.ts`.
+
+### Lazy Loading
+
+Quando queremos carregar apenas o necessário para o momento da aplicação.
+
+OBS: Quando declaramos dentro de `routes` o loadChildren e colocamos o componente e módulo, este módulo nao pode mais ser declarado em outro lugar, portanto no `app.module.ts` se ele estiver lá, apague!
+Isso faz parte dos passos a serem seguidos para usar o Lazy Loading: colocar o loadChildren conforme arquivo de routing, apagar o modulo do app.module, e encontrar o caminho que vc está agora usando e apagar do outro arquivo routing...
+
+### Guarda de Rotas
+
+Exemplo: usuário não está logado no sistema mas consegue acessar um endpoint e ver alguma coisa. Com a guarda de rota ele fica impossibilitado.
+Utilizando AuthGuard para CanActivate e CanActivateChild: o Child vai cuidar das rotas filhas enqto o CanActivate vai cuidar das principais.
+Interessante utilizar o `console.log` para o _route_ e _state_ para sempre verificar as informações das rotas. Dependendo de onde vc colocar o `CanActivate/CanActivateChild`, as informações e as checagens serão feitas em momentos diferentes.
+`CanDeactivate/` ajuda a travar o usuário a não continuar no sistema. Nosso exemplo é: mudou nome do aluno,o usuário não pode ir para "Cursos", por exemplo. Para isso colocamos no `alunos-deactivate.guard.ts` `return !component.formMudou;`. (detalhe: depois mudamos a lógica, utilizando um método `podeMudarRota()`)
+Para trabalhar com o `CanDeactivate`, precisamos implementar o `CanDeactivate` e ao lado dele colocar qual componente queremos desativar a rota...
+
+Qual o objetivo de usar o canLoad: todo o sistema, quando está logado e deseja "recarregar" a aplicação dando um ENTER, ele irá para página inicial de login, porém sem o `CanLoad` os arquivos `chunk` na aba `network` ficam disponíveis na aba de desenvolvedor, portanto o CanLoad ajuda nessa proteção de código a vista...
+
 ## Dicas
 
 1. Para saber o que é preciso modificar dentro de um elemento no Angular, dar um console.log, utilizando até se preciso o ElementRef e ir navegando sobre ele.
 2. Evitar o uso do ElementRef em aplicações, pois o acesso é feito direto no DOM, e traz vulnerabilidades na aplicação. Uma alternativa é o Renderer.
+3. Subscribe do OBservable: funciona como se fosse uma inscrição de Youtube, você é notificado quando subscrito...
 
 ## Algumas libs interessantes a instalar
 
