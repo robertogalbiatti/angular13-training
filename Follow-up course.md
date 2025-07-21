@@ -1,0 +1,263 @@
+# Acompanhamento curso
+
+1. `ng new my-first-app` (colocar não e CSS)
+
+2. Depois ir para a pasta com o comando cd e dar `um ng server` para criar um servidor de desenvolvimento para testarmos no navegador.
+   > Para o começo do desenvolvimento e aprendizado junto ao instrutor, deve-se baixar o app.component.html e trocar pelo atual
+
+**_Como funciona a build do angular? Quando damos start num projeto com ng serve?_**
+
+> (ver vídeo 16)...
+
+## Entendendo o que tem dentro do arquivo `.module`:
+
+Se estamos falando por exemplo do `app.module.ts`, no Declarations teremos todos os componentes que iremos utilizar (components, directives e pipes). No Imports, colocamos os módulos que iremos utilizar neste mesmo (ou ainda o que está sendo utilizado no componente que declaramos).
+No Providers colocamos os serviços que iremos utilizar, e se estamos colocando no `app.module.ts` significa que o serviço estará disponivel para todos os módulos, o que pode vir aq? Autenticação, Login, etc... E o bootstrap seria o que estamos instanciando quando iniciamos a aplocação.
+
+## Criando componente
+
+Criar uma pasta e dentro dela criar os arquivos na mão, ou dentro da pasta vc da o comando `ng g c <nome do componente>`. Se for criar sem o arquivo spec seria: `ng g c <component> --skip-tests=true`
+
+> OBS: No caso seria `ng generate class <nome>`.
+
+## Adicionando Bootstrap para o projeto criado
+
+Instala-se o bootstrap não em modo global: `npm install --save bootstrap@3`.
+Após isto, ir no arquivo `angular.json` e informar de onde vem o **_style_**. Ex: "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+## Entendendo os arquivos
+
+Primeiramente o arquivo _main.ts_ vem primeiro e dentro dele achamos um `bootstrapModule(AppModule)`, então, se abrirmos o _app.module.ts_ encotramos o `AppComponent`. Assim, o Angular analisa agora o _app.component.ts_, lê o `app-root` (selector)\* e assim dentro do _index.html_ lá está o `app-root`, assim ele deve inserir o app componente, e então o app component possui um html, então o angular lê esse html.
+
+> \*Com esta informação, Angular entende que “essa linha” deva ser modificado pro Componente que utiliza o `app-root`, assim utilizando o template _app.component.html_.
+
+![Alt text](/screenshots/app-root.png?raw=true)
+
+![Alt text](/screenshots/AppComponent.png?raw=true)
+
+![Alt text](/screenshots/AppComponentfile.png?raw=true)
+
+![Alt text](/screenshots/indexHtml.png?raw=true)
+
+![Alt text](/screenshots/AppComponentHtml.png?raw=true)
+Isso é o que irá mostrar em tela...
+
+> Basicamente o angular é um JS framework que muda o DOM em tempo real (runtime)
+
+_App.module.ts_: angular usa os componentes para criar as páginas, e módulos para “embrulhar” coisas diferentes, portanto se criamos uma pasta server e criamos o _server.component.ts_ e _html_, precisamos coloca-lo no `@NgModule` como declarations, para poder ser lido pelo angular.
+Quando vemos bootstrap nas declarações: significa, qual componente deve ser reconhecido dentro do _index.html_.
+
+## Databiding
+
+Comunicação entre nosso business code, ts code e o template (html que o usuário vê).
+![Alt text](/screenshots/Databiding.png?raw=true)
+
+## String Interpolation
+
+Deve-se usar quando queremos mostrar algo no _template_, algo como texto... e de outra forma usar **_Property Biding_**, como mostrar um componente, ou querer mudar algo, seja um elemento HTML ou whatever...
+
+> Lembrando que neste caso: `<button class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button>` A parte `[disabled]="!allowNewServer">` na verdade é Angular, e não HTML...
+
+## Two-way Data Biding
+
+Estamos utilizando o ngModel (que é uma diretiva, que pertence ao FormsModule), utilizamos `[(ngModel)]="something"`.
+E para isso, é necessário importar o FormsModule.
+
+## Angular CLI
+
+Para utilizar outra porta para sua aplicação, dê o comando:
+`ng serve --port XXXX`
+e ainda pode colocar do lado a live reload port se quiser:
+`ng serve --port XXXX --live-reload-port YYYYY`
+
+O que é o arquivo karma.config.js?
+É o arquivo de configuração do Jasmine, o teste unitário que é criado quando criamos um projeto.
+
+Arquivo polyfills.ts: arquivo onde possui algumas bibliotecas a mais para o projeto.
+
+Para fazer build da aplicação (para prod mudar o env):
+
+![Alt text](/screenshots/buildDev.jpg?raw=true)
+
+### Arquivo package.json
+
+"dependencies": bibliotecas que precisa pra rodar o projeto
+"devDependencies": bibliotecas para rodar enquanto desenvolve. Exemplo: no dev possui o typescritp, pois depois que é feito o build, estamos utilizando o EcmaScript, e não mais o TS.
+
+![Alt text](/screenshots/packageJsonPolyfillsDependencies.jpg?raw=true)
+
+![Alt text](/screenshots/packageJsonDependencies.jpg?raw=true)
+
+## Directives
+
+são instruções no DOM (componentes acabam sendo tb “tipo” instruções...pq?
+Estamos falando para o Angular adicionar o conteúdo do nosso **_Template_** (assim como a lógica do _arquivo ts_, de forma que estamos indicando no `selector`).
+Mas os componentes são **_directives_** com um **_template_**, por assim dizer.
+Assim como existe os **_directives_** sem **_template_**:
+
+![Alt text](/screenshots/directives.png?raw=true)
+
+Usos de directives: **_ngIf, ngElse_** (estruturais) e também tem de **_atribute_** que funcionam onde modificam apenas onde foram colocadas, como elementos HTML.
+Para **_ngClass_**, ele só acontecerá se uma condição acontecer, portanto trabalha com boolean, e estamos falando de classe CSS.
+
+> **OBS: Para as structural directives sempre utilizamos o \* antes, sempre que modifica o DOM!!!**
+
+![Alt text](/screenshots/diretivasTipos.png?raw=true)
+
+Pensando na performance, custos e etc, quando falamos de **_ngIf_**, pensar no uso da propriedade _hidden_ como _property biding_.
+
+![Alt text](/screenshots/hiddenVsngIf.png?raw=true)
+
+> **OBS: o uso do Hidden fica a mostra para o usuário no browser, portanto sempre pensar na parte de segurança!!!**
+
+Criamos uma diretiva chamada fundoAmarelo, no projeto diretivas, para especificar esta diretiva para um determinado elemento do HTML, fazemos:
+`selector: p[fundoAmarelo]`
+Neste caso estamos entrando no seletor da diretiva criada e especificando o uso somente para parágrafos.
+
+HostListener e HostBiding em diretivas:
+HostListener fica escutando eventos da diretiva, e o Biding permite o biding de um atributo/classe do html numa variável. Ver diretiva `highlight-mouse.directive.ts`
+
+Utilizando TemplateRef e ViewContainerRef: estamos criando uma diretiva _'ngElse'_, portanto o TemplateRef faz referência a tag Template (que vem do Web Components, ver aula ngIf) e o ViewContainerRef ao que vai ser mostrado que seria uma div.
+
+## Services
+
+Utilizado muito para CRUD's.
+
+![Alt text](/screenshots/service.png?raw=true)
+
+![Alt text](/screenshots/dry.png?raw=true)
+
+Quando estamos trabalhando com Services, ele é automaticamente escrito no providers no `app.module.ts` pelo angular CLI, e neste caso ela é instanciada apenas uma vez.
+
+Singleton: quando estamos utilizando o mesmo serviço entre mais componentes. Ou seja, no providers de diferentes módulos está sendo declarado um Serviço, mas se dermos um console.log dentro do próprio Service, o navegador mostrará apenas uma instância.
+
+Outra forma de utilizar o service sem declarar no módulo, e declara diretamente dentro do componente, abaixo do StylesUrl, na anotation Component. Assim o componente estará utilizando este serviço, porém, no console.log aparecerá mais de uma instância do serviço.
+
+## Novo course project
+
+Nesta parte do curso, estamos criando um app de acordo com o modelo abaixo:
+![Alt text](/screenshots/planningApp.png?raw=true)
+
+Para criar de forma automática um Component e sem o arquivo spec(Testes), dar o comando:
+`ng g c recipes --skip-tests true`
+
+Para criar algo dentro de um diretório de um component:
+`ng g c recipes/recipe-detail --skip-tests true`
+
+## Debug
+
+A função debug pode ser acessada diretamente na aba desenvolvedor em **"Sources"** e se pularmos pro arquivo **_main.bundle.js_** iremos encontrar nossos métodos e afins.
+Assim que colocarmos um ponto de parada ele vai direto para um arquivo TypeScript, mas como?!
+Isso tudo acontece pq o JS suporta **source maps**.
+**_Source maps_**: CLI adiciona ao nosso bundle o arquivo TypeScript para o navegador traduzir JS para TS. É assim que vemos nosso código em TS.
+
+### Como encontrar nossos arquivos?
+
+R.: em Sources, ir em webpack
+![Alt text](/screenshots/webpackfiles.png?raw=true)
+
+## Property and Event Bidinders
+
+Apenas uma imagem pra exemplificar o que foi visto
+
+![Alt text](/screenshots/propertyEvenBiding.png?raw=true)
+
+Utilizamos na aula passada o decorator `@Input()`: serve para os componentes "pais" poderem dar um bind das propriedades dele.
+Sem ele, não há erro, mas o front não mostrará o elemento...
+Dessa forma os pais passam aos filhos as propriedades, onde ele foi implementado.
+Resumido, colocamos o Input quando queremos pegar algo de fora. Ex: Recipe em **_recipe-item.component_** está pegando o Recipe do **_recipe-list.compoent_**.
+
+Agora, para o filho orientar ao pai que houve uma mudança no componente filho, ou seja o filho passa propriedades para o componente pai:
+Então utilizamos o `@Output()`: estamos passando algo para fora do componente.
+
+Vale lembrar que com o `@Output()` nós criamos o EventEmitter e já com o `@Input()` não...
+
+## Entendendo **_View Encapsulation_**
+
+Sempre há o DOM por trás dos elementos, e existe uma shadow por trás disso, o Angular trabalha de uma forma em que os elementos de **_style_** um componente ficam "marcados".
+Falamos de shadow DOM, que não é suportado para todos os browsers: cada elemento possui seu shadow DOM por trás, onde é possível assinalar **_styles_** para cada elemento. Portanto o Angular emular isso dessa forma.
+
+É possível ver os **_\_ngcontent-ejo-1_** ou 2:
+
+Conforme o exemplo abaixo:
+
+![Alt text](/screenshots/EncapsulationView.png?raw=true)
+
+Em relação a encsulamento, é possivel modificá-lo através do decorator `@Component`, onde é possível colocar `encapsulation: ViewEncapsulation.None` (entre outros)
+None significa que não há encapsulation e portanto a mudança de style no CSS afetará o componente globalmente.
+
+## Local References
+
+Uso de referências locais dentro do template, mas o uso é restrito ao template e NÃO ao código TS: usa-se '#' para tanto.
+
+## Local References and any Elements
+
+Para tal caso, usamos o `@ViewChild` no nosso componente, assim é possível acessar referências locais ou até mesmo elementos DOM.
+
+## Directive Ng-content
+
+Utilizar a directive ng-content no seu component, no local onde vc quer renderizar o conteúdo (que foi passado agora para o `app.component.ts`).
+O que acontece quando colocamos isso no nosso `server-element.component` (exemplo)? Angular irá dentro do app.component e dentro da tag do nosso elemento irá ler este conteúdo.
+Uma boa alternativa para reuso de componentes e quando há um HTML muito complexo para uso de **_Property Biding_**.
+
+## Porque utilizamos o ngOnInit?
+
+Abaixo uma figura ilustrativa para entender cada um deles:
+![Alt text](/screenshots/LifecyclesAngular.png?raw=true)
+
+## Pipes
+
+O que são Pipes? transforma o valor dentro de um Template. O Angular já tem Pipes embutidos: pra trabalhar com números, moedas e preços...etc
+
+[Documentção para Pipes - Angular ](https://angular.io/guide/pipes)
+
+O que é um pipe puro? Ele não olha as modificações do valor que foi passado como parâmentro (como um método de 'transform'). Não ve as modificações dele.
+Ou seja se criamos um pipe para filtrar valores e adicionamos o valor novo e já deixamos filtrado para mostrar esse valor novo, ele não aparecerá (aula 46 - Pipe puro)
+
+Pipe não puro: quando há uma modificação de valor que é recebido pelo pipe, ele continua observando os valores.
+
+> OBS: no curso vemos o pipe como filtro e orderBy, NÃO FAZER ISSO, apenas foi didático.
+
+## Single Page Application e Rotas
+
+Quando temos uma página em que clicamos em algumas abas e a página não está sendo recarregada, ela é uma SPA, porém se a cada clique a página recarregar, ela não é uma SPA.
+Neste caso, a cada clique na SPA, estamos mudando o Hash (#) pois é modificado algo na página apenas.
+
+![Alt text](/screenshots/hashAngular.png?raw=true)
+
+O componente da rota é renderizado dentro da tag `<router-outlet></router-outlet>`, criamos na mão o `app.routing.ts` colocando tudo que deve ser feito para poder utilizar as rotas.
+
+Uma forma bem simples de saber onde estamos, qual rota, seu id...etc é utilizar a classe do Angular ActivatedRout, e assim colocamos um console log para vermos onde podemos pegar o id, depois disso com o this.id passamos o caminho que neste caso foi `this.id = this.route.snapshot.params['id]`. E assim colocando no template o String Interpolation do ID para mostrar em tela, mas esta forma não atualiza em tempo real caso mudemos o id em um input (exemplo). A gente só pega a "foto" do primeiro id.
+
+`queryParams`: parâmetro de rota de URL. Utilizado quando queremos mostrar em qual página estamos (e mostrar na url, ex: www.algo.com?pagina=1), ou para qualquer parâmetro de URL.
+
+Quando estamos codando um `routing.module`, no `imports` podemos colocar `RouterModule.forRoot` ou `forChild`, o forChild vem quando estamos declarando um módulo de funcionalidade de rota e o `ForRoot` dentro do `app.routing.module.ts`.
+
+### Lazy Loading
+
+Quando queremos carregar apenas o necessário para o momento da aplicação.
+
+OBS: Quando declaramos dentro de `routes` o loadChildren e colocamos o componente e módulo, este módulo nao pode mais ser declarado em outro lugar, portanto no `app.module.ts` se ele estiver lá, apague!
+Isso faz parte dos passos a serem seguidos para usar o Lazy Loading: colocar o loadChildren conforme arquivo de routing, apagar o modulo do app.module, e encontrar o caminho que vc está agora usando e apagar do outro arquivo routing...
+
+### Guarda de Rotas
+
+Exemplo: usuário não está logado no sistema mas consegue acessar um endpoint e ver alguma coisa. Com a guarda de rota ele fica impossibilitado.
+Utilizando AuthGuard para CanActivate e CanActivateChild: o Child vai cuidar das rotas filhas enqto o CanActivate vai cuidar das principais.
+Interessante utilizar o `console.log` para o _route_ e _state_ para sempre verificar as informações das rotas. Dependendo de onde vc colocar o `CanActivate/CanActivateChild`, as informações e as checagens serão feitas em momentos diferentes.
+`CanDeactivate/` ajuda a travar o usuário a não continuar no sistema. Nosso exemplo é: mudou nome do aluno,o usuário não pode ir para "Cursos", por exemplo. Para isso colocamos no `alunos-deactivate.guard.ts` `return !component.formMudou;`. (detalhe: depois mudamos a lógica, utilizando um método `podeMudarRota()`)
+Para trabalhar com o `CanDeactivate`, precisamos implementar o `CanDeactivate` e ao lado dele colocar qual componente queremos desativar a rota...
+
+Qual o objetivo de usar o canLoad: todo o sistema, quando está logado e deseja "recarregar" a aplicação dando um ENTER, ele irá para página inicial de login, porém sem o `CanLoad` os arquivos `chunk` na aba `network` ficam disponíveis na aba de desenvolvedor, portanto o CanLoad ajuda nessa proteção de código a vista...
+
+## Dicas
+
+1. Para saber o que é preciso modificar dentro de um elemento no Angular, dar um console.log, utilizando até se preciso o ElementRef e ir navegando sobre ele.
+2. Evitar o uso do ElementRef em aplicações, pois o acesso é feito direto no DOM, e traz vulnerabilidades na aplicação. Uma alternativa é o Renderer.
+3. Subscribe do OBservable: funciona como se fosse uma inscrição de Youtube, você é notificado quando subscrito...
+
+## Algumas libs interessantes a instalar
+
+### Bootstrap:
+
+https://www.fabricadecodigo.com/bootstrap-instalacao-angular/
